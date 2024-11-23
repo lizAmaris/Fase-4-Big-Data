@@ -1,0 +1,58 @@
+Documentación de HBase
+
+
+1. Estructura de la tabla en HBase
+La tabla creada en HBase se llama used_cars y está diseñada con varias familias de columnas que organizan los datos de los coches usados. La estructura de la tabla es la siguiente:
+
+Nombre de la tabla: used_cars
+
+Familias de columnas:
+
+basic:
+name: Nombre del coche.
+year: Año de fabricación.
+transmission: Tipo de transmisión (manual o automática).
+fuel: Tipo de combustible (gasolina, diésel, etc.).
+specs:
+
+engine: Tipo de motor.
+max_power: Potencia máxima del motor.
+torque: Par motor.
+seats: Número de asientos.
+mileage: Kilometraje.
+sales:
+
+selling_price: Precio de venta.
+seller_type: Tipo de vendedor (particular o concesionario).
+condition:
+
+km_driven: Kilómetros recorridos.
+owner: Tipo de propietario (primer dueño, segundo dueño, etc.).
+Esta estructura permite almacenar y consultar datos relevantes sobre vehículos usados de manera eficiente.
+
+2. Operaciones realizadas en HBase y resultados obtenidos
+A continuación se describen las operaciones realizadas en HBase junto con los resultados que se obtuvieron:
+
+Carga de datos:
+
+Los datos fueron cargados desde un archivo CSV (Car_details_v3.csv) a la tabla used_cars. Cada coche se insertó en la tabla como una fila, y los atributos se distribuyeron en las respectivas familias de columnas.
+Resultado: Mensaje de éxito indicando que los datos se cargaron correctamente.
+Consultas de selección y recorrido:
+
+Se realizó una consulta para mostrar los primeros tres coches en la base de datos usando table.scan().
+Se filtraron coches con un precio de venta inferior a 50,000.
+Se analizó el número de coches por tipo de propietario y se calcularon estadísticas sobre precios promedio por tipo de combustible y transmisión.
+Resultados: Se imprimieron los datos de los coches seleccionados, mostrando información como el ID del coche, nombre y precio, así como estadísticas agregadas de los propietarios y precios.
+Operaciones de escritura:
+
+Inserción: Se insertaron datos al cargar el archivo CSV.
+Actualización: Se actualizó el precio de un coche específico (car_0), reflejando la nueva información.
+Resultado: Mensaje confirmando la actualización del precio.
+Eliminación: Aunque se mencionó una eliminación de un coche específico (car_2), no se implementó en el código original. Se puede agregar usando table.delete().
+Resultado esperado: Confirmación de que el coche ha sido eliminado de la tabla.
+
+Conclusiones:
+
+El código proporciona una forma efectiva de gestionar y analizar datos sobre coches usados en HBase. Las operaciones de carga, consulta, actualización y (potencial) 
+eliminación son fundamentales para el manejo de datos en sistemas NoSQL como HBase, permitiendo a los usuarios realizar análisis y mantener la base de datos actualizada. 
+Si se necesita más información o ejemplos, estaré encantado de ayudar.

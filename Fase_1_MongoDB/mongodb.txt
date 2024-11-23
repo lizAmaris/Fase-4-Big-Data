@@ -1,0 +1,21 @@
+//Documentación:
+1. Conjunto de datos e inserción:
+   - El comando `insertMany` inserta más de 100 documentos, lo cual cumple con el requisito de datos de prueba.
+   - La inserción individual de un documento con `insertOne` es también correcta y demuestra el uso de la inserción básica.
+
+2. Consultas básicas:
+   - `db.datos.find({});` selecciona todos los documentos, lo cual es adecuado para una consulta básica de selección.
+   - `db.datos.updateOne({ name: 'John Doe' }, { $set: { city: 'Houston' } });` actualiza el campo `city` de un documento específico, cumpliendo con una operación de actualización.
+   - `db.datos.deleteOne({ name: 'Mike Johnson' });` elimina un documento específico, cumpliendo con una operación de eliminación.
+
+3. Consultas con filtros y operadores:
+   - `db.datos.find({ age: { $gt: 30 } });` filtra documentos donde `age` es mayor a 30, utilizando un operador de comparación (`$gt`).
+   - `db.datos.find({ purchases: { $gte: 5, $lte: 10 } });` usa operadores `$gte` y `$lte` para filtrar en un rango de valores, lo cual es correcto.
+   - `db.datos.find({ city: { $in: ['New York', 'Los Angeles', 'Chicago'] } });` utiliza el operador `$in` para filtrar por ciudades específicas, cumpliendo el objetivo.
+
+4. Consultas de agregación:
+   - `db.datos.aggregate([{ $count: "total_customers" }]);` cuenta el total de documentos, cumpliendo con la estadística de conteo.
+   - `db.datos.aggregate([{ $group: { _id: null, avgAge: { $avg: "$age" } } }]);` calcula el promedio de la edad, lo cual cumple con la agregación de promedio.
+   - `db.datos.aggregate([{ $group: { _id: null, totalSpent: { $sum: "$amountSpent" } } }]);` calcula la suma total de `amountSpent`, lo cual es adecuado.
+   - `db.datos.aggregate([{ $group: { _id: null, avgPurchases: { $avg: "$purchases" } } }]);` calcula el promedio de `purchases`, cumpliendo con otra operación de agregación.
+
